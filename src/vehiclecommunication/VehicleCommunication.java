@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 /**
  *
  * @author rahulrajk
@@ -33,11 +34,15 @@ public class VehicleCommunication {
           panel.setLayout(boxlayout);
 
 
-          panel.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));
-          panel.setBackground(Color.cyan);
-          JButton jb1 = new JButton("Vehicle");
-          JButton jb2 = new JButton("Power Station");
+          panel.setBorder(new EmptyBorder(new Insets(300, 60, 300, 60)));
+          panel.setBackground(Color.WHITE);
+          JButton jb1 = new JButton("        Vehicle          ");
+          
+          JButton jb2 = new JButton("   Power Station   ");
           JLabel notices = new JLabel("Smart Vehicle Communication");
+          notices.setFont(new Font(notices.getFont().getName(), notices.getFont().getStyle(), 20));
+          
+//          notices.setPreferredSize(new Dimension(500, 200));
 
           jb1.addActionListener(new java.awt.event.ActionListener() {
 
@@ -102,7 +107,7 @@ public class VehicleCommunication {
           panel.add(notices);
           panel.add(jb1);
           panel.add(jb2);
-          frame.setSize(700,700);
+          frame.setSize(500,700);
           frame.add(panel);
           frame.pack();
           frame.setVisible(true);

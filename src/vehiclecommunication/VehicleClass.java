@@ -59,7 +59,7 @@ public class VehicleClass {
                  try {
                      String idstring = notices1.getText().toString();
                      System.out.println(idstring);
-                    stmt.executeUpdate("Insert into communication(name) values('ID3456789')");
+                    stmt.executeUpdate("Insert into communication(name) values('ID34567869')");
                     notices.setText("Request Pending");
                 } catch (Exception ex) {
                     ex.printStackTrace();
