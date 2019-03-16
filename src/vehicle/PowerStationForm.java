@@ -8,26 +8,62 @@ package vehicle;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Timer;
 
 /**
  *
- * @author sabari
+ * @author rahulrajk
  */
 public class PowerStationForm extends javax.swing.JFrame {
-
+    
+    boolean chk;
+    Connection conn = null;
+    String name;                   
+    java.sql.Statement stmt = null;                  
+    ResultSet rs;
+    
     /**
      * Creates new form PowerStationForm
      */
     public PowerStationForm() {
         initComponents();
-    }
+        try {
+                      conn = DriverManager.getConnection("jdbc:postgresql://ec2-50-17-231-192.compute-1.amazonaws.com:5432/d8ag3mmgndfnru?user=hxpryiogpooifd&password=e78384a0ce11f7eed457aeac597373f279b5cafad0779bb5644e0a02c03b0dd6&sslmode=require", "hxpryiogpooifd", "e78384a0ce11f7eed457aeac597373f279b5cafad0779bb5644e0a02c03b0dd6");
+                      stmt = conn.createStatement();
+                       Class.forName("org.postgresql.Driver");
+                  } catch (Exception ex) {
+                      ex.printStackTrace();
+                  }
+        try{
+            rs = stmt.executeQuery("select request from communication");                         
+             if(rs.next()){
+                 chk=rs.getBoolean("request");                
+                 if(chk){
+                     System.out.println("Already granted");
+                     jLabel7.setVisible(false);
+                     jLabel8.setVisible(false);
+                     jLabel9.setVisible(false);
+                     jLabel10.setVisible(false);
+                     jLabel11.setVisible(false);
+                     jButton1.setVisible(false);
+                     jLabel6.setText("No Pending Requests Found!!!");                                         
+                 }
+             else{
+                     System.out.println("Requests available");
+                     
+                 }               
+             }                                               
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         
-    Connection conn = null;
-    String name;                   
-    java.sql.Statement stmt = null;                  
-    ResultSet rs;                                 
+    }
+     
+                                     
                       
                   
     
@@ -96,6 +132,11 @@ public class PowerStationForm extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -214,7 +255,7 @@ public class PowerStationForm extends javax.swing.JFrame {
                                                   System.out.println("try");
                                                   jLabel12.setText("Connecting to Server...");
                                                   Thread.sleep(2000);//Time in Milliseconds
-                                                  jLabel12.setText("Granted");
+                                                  jLabel12.setText("Vehicle Validated by Server Successfully");
                                               } catch (InterruptedException ex) {
                                                   Logger.getLogger(PowerStationForm.class.getName()).log(Level.SEVERE, null, ex);
                                               }
@@ -261,6 +302,10 @@ public class PowerStationForm extends javax.swing.JFrame {
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         jLabel12.setText("Connecting to Server...");
     }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 //    private void labelChange(){
 //        jLabel12.setText("Granted");
 //    }
