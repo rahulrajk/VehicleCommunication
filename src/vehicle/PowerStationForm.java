@@ -29,7 +29,7 @@ public class PowerStationForm extends javax.swing.JFrame {
      * Creates new form PowerStationForm
      */
     public PowerStationForm() {
-        initComponents();
+        initComponents();               
         try {
                       conn = DriverManager.getConnection("jdbc:postgresql://ec2-50-17-231-192.compute-1.amazonaws.com:5432/d8ag3mmgndfnru?user=hxpryiogpooifd&password=e78384a0ce11f7eed457aeac597373f279b5cafad0779bb5644e0a02c03b0dd6&sslmode=require", "hxpryiogpooifd", "e78384a0ce11f7eed457aeac597373f279b5cafad0779bb5644e0a02c03b0dd6");
                       stmt = conn.createStatement();
@@ -92,6 +92,7 @@ public class PowerStationForm extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -146,6 +147,8 @@ public class PowerStationForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel13.setText("ID87965487");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -180,11 +183,13 @@ public class PowerStationForm extends javax.swing.JFrame {
                         .addGap(145, 145, 145)
                         .addComponent(jLabel11))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
-                        .addComponent(jLabel12)))
+                        .addComponent(jLabel12))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(jLabel13))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -208,9 +213,11 @@ public class PowerStationForm extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(3, 3, 3)
                 .addComponent(jLabel12)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
@@ -221,6 +228,8 @@ public class PowerStationForm extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
                 
         jButton1.setVisible(false);
+        EXIFrame exi = new EXIFrame(); 
+        exi.main(null);
 //        Connection conn = null;
         String name;                   
         Boolean request;
@@ -351,6 +360,7 @@ public class PowerStationForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
